@@ -4,9 +4,26 @@ import WeatherApp from '@/components/WeatherApp.vue';
 </script>
 
 <template>
-  <WeatherApp/>
-  <TodoApp/>
+  <div id="links">
+    <RouterLink to="/todo">Todo</RouterLink>
+    <RouterLink to="/weather">Weather</RouterLink>
+  </div>
+
+  <RouterView />
 </template>
+
+<style scoped>
+a {
+  color: white;  
+  margin: 0 10px;
+  font-size: 28px;
+}
+#links {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+</style>
 
 <style>
 * { font-size: 24px; font-weight: bold; }
