@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import TodoApp from '@/components/TodoApp.vue';
-import WeatherApp from '@/components/WeatherApp.vue';
-</script>
-
 <template>
   <div id="links">
     <RouterLink to="/todo">Todo</RouterLink>

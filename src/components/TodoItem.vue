@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-export interface Todo {
-  id: number
-  text: string
-  completed: boolean
-}
+import { type Todo } from "@/modules/types";
+
 defineEmits<{
   changed: [todo: Todo]
   delete: [todo: Todo]

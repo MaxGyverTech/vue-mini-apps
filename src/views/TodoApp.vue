@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, watch, type Ref } from 'vue'
 import TodoItem from "@/components/TodoItem.vue";
-import { type Todo } from "@/components/TodoItem.vue";
+import { type Todo } from "@/modules/types";
 
 let id=0;
 const storage = "vue_todo";
 const todos: Ref<Todo[]> = ref(JSON.parse(localStorage.getItem(storage) || '[]'))
-watch(todos,() => {localStorage.setItem(storage, JSON.stringify(todos.value))}, {deep: true})
+watch(todos,() => localStorage.setItem(storage, JSON.stringify(todos.value)), {deep: true})
 todos.value.forEach(todo => {
   if (todo.id>=id) id = todo.id+1; 
 });
@@ -16,7 +16,7 @@ const completedTodos = computed(() => todos.value.filter((todo) => todo.complete
 const editTipVisible = ref(false)
 let firtsTimeFlag = true;
 function addTodo(e: Event) {
-  let input = (e.target as HTMLInputElement);
+  let input = e.target as HTMLInputElement;
   if (input && input.value) {
     todos.value.push({ id: id++, text: input.value, completed: false });
     input.value = '';
@@ -51,12 +51,11 @@ function deleteTodo(todo: Todo) {
           <TodoItem v-for="todo in completedTodos" :key="todo.id"
                     :todo="todo" @delete="deleteTodo" @changed="changedTodo"/>
           
-          <button @click="todos = activeTodos" v-if="todos.length > 0 && completedTodos.length > 0" 
+          <button v-if="todos.length > 0 && completedTodos.length > 0" 
+                  id="delete-completed-btn" @click="todos = activeTodos"
                   :key="'deletebtn'">Delete completed</button>
         </TransitionGroup>
       </div>
-      <Transition name="fade">
-      </Transition>
 </div>
 </template>
 

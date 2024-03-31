@@ -4,32 +4,31 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
-import WeatherApp from './components/WeatherApp.vue'
-import TodoApp from './components/TodoApp.vue'
-import IndexView from './components/IndexView.vue'
+import WeatherApp from './views/WeatherApp.vue'
+import TodoApp from './views/TodoApp.vue'
+import IndexView from './views/IndexView.vue'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'index',
-      component: IndexView
-    },
-    {
-        path: '/todo',
-        name: 'todo',
-        component: TodoApp
-    },
-    {
-      path: '/weather',
-      name: 'weather',
-      component: WeatherApp
-    }
-  ]
-})
-
+export const routes = [
+  {
+    path: '/',
+    name: 'index',
+    component: IndexView
+  },
+  {
+      path: '/todo',
+      name: 'todo',
+      component: TodoApp
+  },
+  {
+    path: '/weather',
+    name: 'weather',
+    component: WeatherApp
+  }
+]
 
 const app = createApp(App)
-app.use(router)
+app.use(createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: routes
+}))
 app.mount('#app')
