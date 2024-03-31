@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref,  watch } from 'vue';
+import { ref,  watch } from 'vue';
 import { getForecast } from '@/modules/api'
 import {type Forecast }from '@/modules/types';
 import WeatherItem from '@/components/WeatherItem.vue';
@@ -43,7 +43,7 @@ watch(citySearch, async () => {
 </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .loader {
   transition: 0.1s;
   position: absolute;
@@ -56,14 +56,27 @@ watch(citySearch, async () => {
   height: 60px;
   animation: spin 2s linear infinite;
 }
+.fade-in {
+  animation: fade-in 0.5s forwards;
+}
+#forecasts {
+  min-height: 100px;
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  div {
+    flex: 1;
+    border: white 1px solid;
+    padding: 5px;
+    margin: 5px;
+    font-size: 13px;
+  }
+}
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-.fade-in {
-  animation: fade-in 0.5s forwards;
-}
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -79,19 +92,7 @@ watch(citySearch, async () => {
   display: block;
   margin: 0 auto;
 }
-#forecasts {
-  min-height: 100px;
-  position: relative;
-  display: flex;
-  margin: 0 auto;
-}
-#forecasts > div {
-  flex: 1;
-  border: white 1px solid;
-  padding: 5px;
-  margin: 5px;
-  font-size: 13px;
-}
+
 #wrapper {
   position: relative;
   max-width: 1000px;

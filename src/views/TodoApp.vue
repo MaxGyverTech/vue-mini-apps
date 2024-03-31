@@ -60,7 +60,7 @@ function deleteTodo(todo: Todo) {
 </template>
 
 
-<style scoped>
+<style scoped lang="scss">
 #wrapper {
   max-width: 800px;
   margin: 0 auto;
@@ -71,9 +71,10 @@ input[type="text"] {
     font-size: 24px;
     width: 100%;
 }
-ul > div, button {margin-top: 20px;}
-ul > span {color: gray;}
-
+ul {
+  div, button {margin-top: 20px;}
+  span {color: gray;}
+}
 .fade-move,
 .fade-enter-active,
 .fade-leave-active {

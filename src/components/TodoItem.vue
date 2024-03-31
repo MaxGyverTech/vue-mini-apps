@@ -26,7 +26,7 @@ const isEditing = ref(false);
 
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .striked {
   text-decoration: line-through;
   color: gray;
@@ -42,9 +42,10 @@ li > div {
   padding: 6px;
   transition: 0.5s;
   border-bottom: 1px white solid;
+
+  button { margin-left: auto;}
 }
 li:last-of-type > div { border-color: transparent; }
-li > div > button { margin-left: auto;}
 input[type="checkbox"] {
     min-width: 30px;
     height: 30px;
