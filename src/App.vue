@@ -1,3 +1,7 @@
+<script setup lang="ts">
+document.title = 'Vue mini apps'
+</script>
+
 <template>
   <div id="links">
     <RouterLink to="/todo">Todo</RouterLink>
