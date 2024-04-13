@@ -34,7 +34,7 @@ describe('WeatherApp', () => {
     
     await wrapper.get('input[type="text"]').setValue('Test C');
     expect(wrapper.find('.loader').exists()).toBe(true);
-    expect(getForecast).toBeCalledTimes(1);
+    expect(getForecast).toBeCalledTimes(2);
 
     await flushPromises();
 

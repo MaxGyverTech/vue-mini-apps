@@ -5,7 +5,7 @@ import {type Forecast }from '@/modules/types';
 import WeatherItem from '@/components/WeatherItem.vue';
 
 
-const citySearch = ref('')
+const citySearch = ref('1')
 const city = ref('')
 const isLoading = ref(false)
 const forecasts = ref([] as Forecast[])
@@ -28,6 +28,7 @@ watch(citySearch, async () => {
   forecasts.value = f.forecasts
   isLoading.value = false
 })
+citySearch.value = ''
 </script>
 
 <template>
