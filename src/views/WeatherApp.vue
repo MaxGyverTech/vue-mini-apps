@@ -36,7 +36,7 @@ citySearch.value = ''
     <h1>Weather App</h1>
     <input class="centered" type="text" v-model="citySearch" placeholder="Enter city"> 
     
-    <div class="centered fade-in" :key="city">{{ city }}</div>
+    <div class="fade-in" style="margin-top: 15px;" :key="city">{{ city }}</div>
     <div id="forecasts">
       <p v-if="isLoading" class="loader "></p>
       <WeatherItem v-for="(forecast, index) in forecasts" class="fade-in" :style="{ animationDelay: index * 0.05 + 's' }" :key="city+forecast.date" :forecast="forecast"/>
@@ -65,14 +65,9 @@ citySearch.value = ''
   position: relative;
   display: flex;
   margin: 0 auto;
-  div {
-    flex: 1;
-    border: white 1px solid;
-    padding: 5px;
-    margin: 5px;
-    font-size: 13px;
-  }
+  flex-wrap: wrap;
 }
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -98,6 +93,6 @@ citySearch.value = ''
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 40px 20px;
 }
 </style>
