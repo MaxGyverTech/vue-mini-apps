@@ -18,6 +18,7 @@ onMounted(async () => {
     currentLocation.value = { lat: position.coords.latitude, lon: position.coords.longitude }
     await remoteSearch()
   }, (e) => console.error(e))
+  isLoading.value = false
 })
 
 const remoteSearch = async () => {
