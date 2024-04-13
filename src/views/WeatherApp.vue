@@ -5,18 +5,12 @@ import {type Forecast }from '@/modules/types';
 import WeatherItem from '@/components/WeatherItem.vue';
 
 
-const citySearch = ref('1')
+const citySearch = ref('')
 const city = ref('')
 const isLoading = ref(false)
 const forecasts = ref([] as Forecast[])
-
 let currentLocation: {lat: number, lon: number} = null!
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition((position) => {
-    currentLocation = { lat: position.coords.latitude, lon: position.coords.longitude }
-    citySearch.value = ''
-  }, (e)=>console.error(e))
-}
+
 
 watch(citySearch, async () => {
   isLoading.value = true
@@ -28,7 +22,13 @@ watch(citySearch, async () => {
   forecasts.value = f.forecasts
   isLoading.value = false
 })
-citySearch.value = ''
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition((position) => {
+    currentLocation = { lat: position.coords.latitude, lon: position.coords.longitude }
+    citySearch.value=' '
+    citySearch.value = ''
+  }, (e)=>console.error(e))
+}
 </script>
 
 <template>
