@@ -27,12 +27,8 @@ function addTodo(e: Event) {
     }
   }
 }
-function changedTodo(todo: Todo) {
-  todos.value[todos.value.findIndex((t)=>t.id==todo.id)] = todo
-}
-function deleteTodo(todo: Todo) {
-  todos.value = todos.value.filter((t) => t !== todo)
-}
+let changedTodo = (todo: Todo) => todos.value[todos.value.findIndex((t)=>t.id==todo.id)] = todo
+let deleteTodo = (todo: Todo) => todos.value = todos.value.filter((t) => t !== todo)
 </script>
 
 <template>
